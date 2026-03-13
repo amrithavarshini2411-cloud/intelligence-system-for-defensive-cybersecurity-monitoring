@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Login Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        body {
+            background-color: #1a1d23;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* The main card container */
+        .login-card {
+            background-color: #2c2f36;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 40px; /* Pronounced rounded corners like the image */
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Neon border effects using pseudo-elements */
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 40%;
+            border-top: 3px solid #3be8f1;
+            border-right: 3px solid #3be8f1;
+            border-top-right-radius: 40px;
+            pointer-events: none;
+        }
+
+        .login-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 40%;
+            border-bottom: 3px solid #e91e63;
+            border-left: 3px solid #e91e63;
+            border-bottom-left-radius: 40px;
+            pointer-events: none;
+        }
+
+        .login-header {
+            color: #3be8f1;
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        input {
+            width: 100%;
+            background-color: #4a4d55;
+            border: none;
+            border-radius: 50px;
+            padding: 0.75rem 1.25rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            outline: none;
+            transition: background-color 0.2s;
+        }
+
+        input:focus {
+            background-color: #565a63;
+        }
+
+        input::placeholder {
+            color: #8c8f96;
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: #3be8f1;
+            color: #1a1d23;
+            font-weight: 600;
+            padding: 0.75rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 20px rgba(59, 232, 241, 0.4);
+            transition: transform 0.1s, box-shadow 0.2s;
+        }
+
+        .login-btn:hover {
+            box-shadow: 0 0 30px rgba(59, 232, 241, 0.6);
+        }
+
+        .login-btn:active {
+            transform: scale(0.98);
+        }
+
+        .footer-links {
+            text-align: left;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .footer-links p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-links span {
+            color: #e91e63;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .footer-links span:hover {
+            text-decoration: underline;
+        }
+
+        /* Custom scrollbar for better look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1d23;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a4d55;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h1 class="login-header">Login Form</h1>
+        
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="username">User name</label>
+                <input type="text" id="username" placeholder="fe" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Password">
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div class="footer-links">
+            <p>Forget password ? <span>Click Here</span></p>
+            <p>Dont have an account ? <span>Click Here</span></p>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            // Simple visual feedback for the button
+            const btn = document.querySelector('.login-btn');
+            const originalText = btn.innerText;
+            btn.innerText = 'Authenticating...';
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                // Since we can't use alerts, we'll just log or show a mock message
+                console.log('Login attempted');
+            }, 1000);
+        }
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
